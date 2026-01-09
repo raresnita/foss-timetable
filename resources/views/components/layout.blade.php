@@ -22,7 +22,10 @@
             @auth
                 <div>
                     <a href="#">Notifications</a>
-                    <a href="#">Log out</a>
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button>Log out</button>
+                    </form>
                 </div>
             @endauth
 
