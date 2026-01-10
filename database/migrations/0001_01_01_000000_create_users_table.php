@@ -18,6 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('user_role', ['admin', 'prof', 'stud'])->default('stud');
             $table->string('password');
+
+            $table->foreignId('group_id')->nullable()->constrained()->nullOnDelete();
+
             $table->rememberToken();
             $table->timestamps();
         });
