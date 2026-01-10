@@ -1,6 +1,6 @@
 <x-layout>
     <x-heading>Login</x-heading>
-    <div>
+    <div class="max-w-175">
         <p>Enter your credentials to see notifications from professors and future classes</p>
 
         <form method="POST" action="/login">
