@@ -11,5 +11,4 @@ class GroupController extends Controller
         $groups = Group::get();
         return view('groups.index', compact('groups'));
     }
-    //
 }

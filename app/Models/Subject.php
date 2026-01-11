@@ -16,4 +16,9 @@ class Subject extends Model
     {
         return $this->belongsTo(User::class, 'professor_id');
     }
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(Group::class, 'group_id');
+    }
 }

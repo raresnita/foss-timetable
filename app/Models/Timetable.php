@@ -19,10 +19,10 @@ class Timetable extends Model
         return $this->subject->professor;
     }
 
-    public function classroom(){
+    public function classroom(): BelongsTo
+    {
         return $this->belongsTo(Classroom::class);
     }
-
     public function group(): BelongsTo
     {
         return $this->belongsTo(Group::class);
