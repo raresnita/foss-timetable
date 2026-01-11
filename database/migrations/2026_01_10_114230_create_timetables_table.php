@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('timetable', function (Blueprint $table) {
+        Schema::create('timetables', function (Blueprint $table) {
             $table->id();
             $table->foreignId('group_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('teacher_id')->constrained('users');
             $table->foreignId('classroom_id')->constrained();
             $table->foreignId('subject_id')->constrained();
+            $table->enum('course_type', ['Course', 'Laboratory'])->default('Course');
             $table->integer('day_of_week');
             $table->integer('start_hour');
             $table->integer('end_hour');
