@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Classroom;
 use App\Models\Group;
+use App\Models\Subject;
+use App\Models\Timetable;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -28,17 +31,45 @@ class DatabaseSeeder extends Seeder
         // creation of 5 groups of 10 students
         $groups = Group::factory(5)->create();
 
-        // creation of 7 professors
-        User::factory(7)->create([
+        // creation of 10 professors
+        User::factory(10)->create([
             'group_id' => null,
             'user_role' => 'prof',
         ]);
 
+        // creating 10 students each for one group
         foreach ($groups as $group) {
             User::factory(10)->create([
                 'group_id' => $group->id,
                 'user_role' => 'stud',
             ]);
+        }
+
+        $classrooms = Classroom::factory(10)->create();
+        $subjects = Subject::factory(10)->create();
+
+        foreach ($groups as $group) {
+            $days = [1, 2, 3, 4, 5];
+            shuffle($days);
+            $selectedDays = array_slice($days, 0, rand(3,5));
+
+            foreach ($selectedDays as $day) {
+                $hours = [8, 10, 12, 14];
+                shuffle($hours);
+                $selectedHours = array_slice($hours, 0, rand(2,4));
+
+                foreach ($selectedHours as $hour) {
+                    Timetable::create([
+                        'group_id' => $group->id,
+                        'subject_id' => $subjects->random()->id,
+                        'classroom_id' => $classrooms->random()->id,
+                        'course_type' => fake()->randomElement(['Course', 'Laboratory']),
+                        'day_of_week' => $day,
+                        'start_hour' => $hour,
+                        'end_hour' => $hour + 2,
+                    ]);
+                }
+            }
         }
     }
 }
