@@ -22,11 +22,34 @@ class DatabaseSeeder extends Seeder
     {
         // admin creation
         User::factory()->create([
-            'name'=> 'admin',
+            'name' => 'admin',
             'email' => 'admin@test.test',
             'user_role' => 'admin',
             'password' => Hash::make('password'),
         ]);
+
+        // demo accounts creation
+        User::factory()->create([
+            'name' => 'Demo Administrator',
+            'email' => 'demo_admin@test.test',
+            'user_role' => 'admin',
+            'password' => Hash::make('demo_password')
+        ]);
+
+        User::factory()->create([
+            'name' => 'Demo Professor',
+            'email' => 'demo_prof@test.test',
+            'user_role' => 'prof',
+            'password' => Hash::make('demo_password')
+        ]);
+
+        User::factory()->create([
+            'name' => 'Demo Student',
+            'email' => 'demo_stud@test.test',
+            'user_role' => 'stud',
+            'password' => Hash::make('demo_password')
+        ]);
+
 
         // creation of 5 groups of 10 students
         $groups = Group::factory(5)->create();
@@ -51,12 +74,12 @@ class DatabaseSeeder extends Seeder
         foreach ($groups as $group) {
             $days = [1, 2, 3, 4, 5];
             shuffle($days);
-            $selectedDays = array_slice($days, 0, rand(3,5));
+            $selectedDays = array_slice($days, 0, rand(3, 5));
 
             foreach ($selectedDays as $day) {
                 $hours = [8, 10, 12, 14];
                 shuffle($hours);
-                $selectedHours = array_slice($hours, 0, rand(2,4));
+                $selectedHours = array_slice($hours, 0, rand(2, 4));
 
                 foreach ($selectedHours as $hour) {
                     Timetable::create([

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TimetableController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,6 +33,15 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [SessionController::class, 'store']);
 });
 
+Route::post('/demo-login/{role}', function ($role) {
+    $email = match ($role) {
+        'admin' => 'demo_admin@test.test',
+        'prof' => 'demo_prof@test.test',
+        'stud' => 'demo_stud@test.test',
+    };
+
+    \Illuminate\Support\Facades\Auth::login(User::where('email', $email)->first());
+    return redirect()->intended('/');
+});
+
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
-
-
