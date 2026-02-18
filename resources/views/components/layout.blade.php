@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Timetable</title>
+    <title>FOSS Timetable</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
     <nav class="flex items-center justify-between py-4 border-b border-b-teal-600">
         <div>
             <a href="/">
-                <h2 class="text-xl">FOSS TIMETABLE</h2>
+                <h2 class="text-xl">FOSS TIMETABLE <span class="bg-amber-200 px-2 py-1 rounded-lg">DEMO</span></h2>
             </a>
         </div>
         <div class="space-x-6 font-bold">

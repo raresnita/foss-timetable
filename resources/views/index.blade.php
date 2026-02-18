@@ -1,8 +1,7 @@
 @php use Illuminate\Support\Facades\Auth; @endphp
 <x-layout>
-    <x-heading>Welcome</x-heading>
-
     @auth
+        <x-heading>Welcome</x-heading>
         @if(Auth::user()->user_role === 'admin')
             <a href="/manage/users">Manage users</a>
             <a href="/manage/classrooms">Manage classrooms</a>
@@ -59,4 +58,9 @@
         @endif
     @endauth
 
+    @guest
+        <x-heading>FOSS Timetable - a Laravel timetable management demo</x-heading>
+        
+        <p class='bg-amber-200 font-bold p-3 rounded-md shadow-lg w-max'><b>WARNING!</b> The database resets every 24 hours.</p>
+    @endguest
 </x-layout>
