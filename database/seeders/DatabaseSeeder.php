@@ -28,8 +28,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-
-
         // creation of 5 groups of 10 students
         $groups = Group::factory(5)->create();
 
