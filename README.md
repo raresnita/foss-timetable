@@ -22,5 +22,11 @@ This project serves as a showcase for modern Laravel features and best practices
 - PHP 8.2
 - TailwindCSS 4.1
 
+
+### To-do list
+- [ ] Notification UI
+- [ ] Course rescheduling
+- [ ] Dark mode
+
 ### Database diagram
 <img width="916" height="903" alt="database sqlite" src="https://github.com/user-attachments/assets/3acd9fae-8c20-4ca1-8f1b-4e572a9875eb" />
