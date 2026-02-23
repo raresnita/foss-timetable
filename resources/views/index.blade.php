@@ -1,4 +1,3 @@
-@php use Carbon\Carbon; @endphp
 <x-layout>
     @auth
 
@@ -9,40 +8,24 @@
             $nextCourse = $timetableService->getNextCourse(Auth::user());
         @endphp
 
-        <x-heading>Welcome</x-heading>
+        <x-heading>Welcome, {{Auth::user()->name}}!</x-heading>
 
         @if(Auth::user()->user_role === 'admin')
             <a href="/manage/users">Manage users</a>
             <a href="/manage/classrooms">Manage classrooms</a>
             <a href="/manage/groups">Manage classrooms</a>
         @else
-            <div class="grid grid-cols-2 grid-rows-2 gap-4">
-                <x-course-card :course="$currentCourse" type="current"></x-course-card>
-                <x-course-card :course="$nextCourse" type="next"></x-course-card>
-
-                <div
-                    class="bg-slate-50 p-4 rounded-xl shadow-sm border border-black/15 hover:shadow-md hover:border-teal-600 transition-all duration-125">
-                    <div>
-                        <h2>{{ Auth::user()->notifications()->count() }} notification</h2>
-                        @foreach(Auth::user()->notifications as $notification)
-                            <div class="notification-card">
-                                <strong>{{ $notification->data['professor_name'] }}</strong>
-                                for group
-                                <strong>{{ $notification->data['group_name'] }}</strong>:
-                                <p>{{ $notification->data['message'] }}</p>
-                                <small>{{ Carbon::parse($notification->data['sent_at'])->diffForHumans() }}</small>
-                            </div>
-                        @endforeach()
-                    </div>
-                </div>
-                <div
-                    class="bg-slate-50 p-4 rounded-xl shadow-sm border border-black/15 hover:shadow-md hover:border-teal-600 transition-all duration-125">
-                    <div>
-                        @if(Auth::user()->user_role === 'prof')
-                            <a href="/professors/{{ auth()->user()->id }}">View timetable</a>
-                        @else
-                            <a href="/groups/{{ Auth::user()->group->name }}">View timetable</a>
-                        @endif
+            <div class="grid grid-cols-1 grid-rows-4 md:grid-cols-2 md:grid-rows-2 gap-4">
+                    <x-dashboard.course-card :course="$currentCourse" type="current"></x-dashboard.course-card>
+                    <x-dashboard.course-card :course="$nextCourse" type="next"></x-dashboard.course-card>
+                <div>
+                    <x-dashboard.notification-card
+                        :count="Auth::user()->notifications()->count()"></x-dashboard.notification-card>
+                    <div
+                        class="bg-slate-50 p-4 rounded-xl shadow-sm border border-black/15 hover:shadow-md hover:border-teal-600 transition-all duration-125">
+                        <div>
+                            <a href={{Auth::user()->timetableUrl()}}>View your timetable</a>
+                        </div>
                     </div>
                 </div>
             </div>

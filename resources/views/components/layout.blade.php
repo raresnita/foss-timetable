@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-white text-black px-12">
+<body class="bg-white text-black px-4 md:px-12">
     <nav class="flex items-center justify-between py-4 border-b border-b-teal-600">
         <div>
             <a href="/">
@@ -42,6 +42,22 @@
             </div>
         @endguest
     </nav>
+
+{{--    <div id="mobile-menu"--}}
+{{--         class="fixed inset-0 z-60 bg-slate-950 translate-x-full transition-transform duration-300 ease-in-out md:hidden">--}}
+{{--        <div class="flex flex-col items-center justify-center h-full space-y-8">--}}
+{{--            <button id="close-menu" class="absolute top-6 right-6 text-white text-3xl">--}}
+{{--                &times;--}}
+{{--            </button>--}}
+{{--            <a href="#about" class="mobile-link text-3xl font-black uppercase text-white">About</a>--}}
+{{--            <a href="#skills" class="mobile-link text-3xl font-black uppercase text-white">Skills</a>--}}
+{{--            <a href="#projects" class="mobile-link text-3xl font-black uppercase text-white">Projects</a>--}}
+{{--            <a href="#contact" class="mobile-link text-3xl font-black uppercase text-white">Contact</a>--}}
+{{--            <a href="ro.html" class="mobile-link text-3xl font-black uppercase text-white"><img class="w-8"--}}
+{{--                                                                                                src="./flags/ro.svg" alt="Romania flag"></a>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
 
     <section>
         {{$slot}}

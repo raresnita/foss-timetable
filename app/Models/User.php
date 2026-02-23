@@ -57,6 +57,13 @@ class User extends Authenticatable
         return $this->belongsTo(Group::class);
     }
 
+    public function timetableUrl(): string
+    {
+        return $this->user_role === 'prof'
+            ? "/professors/{$this->id}"
+            : "/groups/10{$this->group_id}";
+    }
+
     public function notificationToGroup(Request $request){
         $validated = $request->validate([
             'group_id' => 'required|exists:groups,id',
