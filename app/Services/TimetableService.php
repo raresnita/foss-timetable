@@ -4,10 +4,12 @@ namespace App\Services;
 
 use App\Models\Timetable;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class TimetableService
 {
-    public function getTimetableData($model, $context)
+    public function getTimetableData($model, $context): Collection
     {
         $relations = match ($context) {
             'group' => ['subject.professor', 'classroom'],
@@ -24,7 +26,7 @@ class TimetableService
             ->get();
     }
 
-    public function getCurrentCourse($user): ?\Illuminate\Database\Eloquent\Model
+    public function getCurrentCourse($user): ?Model
     {
         if (!$user) return null;
 
@@ -49,7 +51,7 @@ class TimetableService
         });
     }
 
-    public function getNextCourse($user): ?\Illuminate\Database\Eloquent\Model
+    public function getNextCourse($user): ?Model
     {
         if (!$user) return null;
 
