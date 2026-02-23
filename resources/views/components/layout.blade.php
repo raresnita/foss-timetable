@@ -11,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-white text-black">
-<div class="px-12">
+<body class="bg-white text-black px-12">
     <nav class="flex items-center justify-between py-4 border-b border-b-teal-600">
         <div>
             <a href="/">
@@ -26,7 +25,9 @@
         </div>
         @auth
             <div class="flex items-center gap-4">
-                <a href="#">Notifications</a>
+                @if(Auth::user()->user_role === "prof")
+                <a href="#">Send notification</a>
+                @endif
                 <form method="POST" action="/logout">
                     @csrf
                     <button class="p-2 rounded-md text-red-500 hover:bg-red-500 hover:text-white">Log out</button>
@@ -42,10 +43,9 @@
         @endguest
     </nav>
 
-    <div>
+    <section>
         {{$slot}}
-    </div>
-</div>
+    </section>
 
 </body>
 </html>

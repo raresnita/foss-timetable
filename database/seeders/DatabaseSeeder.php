@@ -28,6 +28,25 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
+
+
+        // creation of 5 groups of 10 students
+        $groups = Group::factory(5)->create();
+
+        // creation of 10 professors
+        User::factory(10)->create([
+            'group_id' => null,
+            'user_role' => 'prof',
+        ]);
+
+        // creating 10 students each for one group
+        foreach ($groups as $group) {
+            User::factory(10)->create([
+                'group_id' => $group->id,
+                'user_role' => 'stud',
+            ]);
+        }
+
         // demo accounts creation
         User::factory()->create([
             'name' => 'Demo Administrator',
@@ -47,26 +66,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Demo Student',
             'email' => 'demo_stud@test.test',
             'user_role' => 'stud',
+            'group_id' => $groups->first()->id,
             'password' => Hash::make('demo_password')
         ]);
-
-
-        // creation of 5 groups of 10 students
-        $groups = Group::factory(5)->create();
-
-        // creation of 10 professors
-        User::factory(10)->create([
-            'group_id' => null,
-            'user_role' => 'prof',
-        ]);
-
-        // creating 10 students each for one group
-        foreach ($groups as $group) {
-            User::factory(10)->create([
-                'group_id' => $group->id,
-                'user_role' => 'stud',
-            ]);
-        }
 
         $classrooms = Classroom::factory(10)->create();
         $subjects = Subject::factory(10)->create();
@@ -94,5 +96,7 @@ class DatabaseSeeder extends Seeder
                 }
             }
         }
+
+
     }
 }
