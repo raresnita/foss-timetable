@@ -16,16 +16,15 @@
             <a href="/manage/groups">Manage classrooms</a>
         @else
             <div class="grid grid-cols-1 grid-rows-4 md:grid-cols-2 md:grid-rows-2 gap-4">
-                    <x-dashboard.course-card :course="$currentCourse" type="current"></x-dashboard.course-card>
-                    <x-dashboard.course-card :course="$nextCourse" type="next"></x-dashboard.course-card>
-                <div>
-                    <x-dashboard.notification-card
-                        :count="Auth::user()->notifications()->count()"></x-dashboard.notification-card>
-                    <div
-                        class="bg-slate-50 p-4 rounded-xl shadow-sm border border-black/15 hover:shadow-md hover:border-teal-600 transition-all duration-125">
-                        <div>
-                            <a href={{Auth::user()->timetableUrl()}}>View your timetable</a>
-                        </div>
+                <x-dashboard.course-card :course="$currentCourse" type="current"></x-dashboard.course-card>
+                <x-dashboard.course-card :course="$nextCourse" type="next"></x-dashboard.course-card>
+
+                <x-dashboard.notification-card
+                    :count="Auth::user()->notifications()->count()"></x-dashboard.notification-card>
+                <div
+                    class="bg-slate-50 p-4 rounded-xl shadow-sm border border-black/15 hover:shadow-md hover:border-teal-600 transition-all duration-125">
+                    <div>
+                        <a href={{Auth::user()->timetableUrl()}}>View your timetable</a>
                     </div>
                 </div>
             </div>
@@ -35,9 +34,9 @@
     @guest
         <x-heading>FOSS Timetable - a Laravel timetable management demo</x-heading>
 
-        <div class="grid grid-cols-3 grid-rows-1 w-max gap-4">
+        <div class="grid sm:grid-rows-3 md:grid-cols-3 md:grid-rows-1 gap-4">
             <div
-                class="relative bg-slate-50 border border-slate-400 p-4 w-lg flex justify-center rounded-lg hover:shadow transition-all duration-150">
+                class="relative bg-slate-50 border border-slate-400 p-4 flex justify-center rounded-lg hover:shadow transition-all duration-150">
                 <form method='POST' action='/demo-login/admin'>
                     @csrf
                     <div>
@@ -48,7 +47,7 @@
             </div>
 
             <div
-                class="relative bg-slate-50 border border-slate-400 p-4 w-lg flex justify-center rounded-lg hover:shadow transition-all duration-150">
+                class="relative bg-slate-50 border border-slate-400 p-4 flex justify-center rounded-lg hover:shadow transition-all duration-150">
                 <form method='POST' action='/demo-login/prof'>
                     @csrf
                     <div>
@@ -59,7 +58,7 @@
             </div>
 
             <div
-                class="relative bg-slate-50 border border-slate-400 p-4 w-lg flex justify-center rounded-lg hover:shadow transition-all duration-150">
+                class="relative bg-slate-50 border border-slate-400 p-4 flex justify-center rounded-lg hover:shadow transition-all duration-150">
                 <form method='POST' action='/demo-login/stud'>
                     @csrf
                     <div>
