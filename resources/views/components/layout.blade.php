@@ -25,20 +25,17 @@
         </div>
         @auth
             <div class="flex items-center gap-4">
-                @if(Auth::user()->user_role === "prof")
-                <a href="#">Send notification</a>
-                @endif
                 <form method="POST" action="/logout">
                     @csrf
-                    <button class="p-2 rounded-md text-red-500 hover:bg-red-500 hover:text-white">Log out</button>
+                    <button class="p-2 rounded-md cursor-pointer text-red-500 hover:bg-red-500 hover:text-white transition-all duration-150">Log out</button>
                 </form>
             </div>
         @endauth
 
         @guest
             <div class="flex items-center gap-4">
-                <a class="p-2 rounded-md hover:bg-teal-600 hover:text-white transition-colors duration-150" href="/register">Register</a>
-                <a class="p-2 rounded-md hover:bg-teal-600 hover:text-white transition-colors duration-150" href="/login">Log in</a>
+                <a class="p-2 rounded-md hover:bg-teal-600 hover:text-white transition-all duration-150" href="/register">Register</a>
+                <a class="p-2 rounded-md hover:bg-teal-600 hover:text-white transition-all duration-150" href="/login">Log in</a>
             </div>
         @endguest
     </nav>
