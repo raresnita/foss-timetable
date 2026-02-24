@@ -3,7 +3,11 @@
 <div {{$attributes->merge(['class' => ($type=== 'current' ? 'bg-teal-100'
 : "bg-slate-50").' h-max p-4 rounded-xl shadow-sm border border-black/15 hover:border-teal-600 transition-all duration-125'])}}>
     <div>
-        <h2 class="font-bold text-xl">{{$type === "current" ? "Current course" : "Next course"}}</h2>
+        <h2 class="font-bold text-xl">{{$type === "current" ? "Current course" : "Next course"}}
+            @if($type === "next")
+                <span class="text-lg italic font-normal">- {{ date('l', strtotime("Sunday +{$course->day_of_week} days")) }} at {{$course->start_hour.':00'}}</span>
+            @endif
+        </h2>
         <div class="flex flex-col md:flex-row md:gap-1">
             @if($course)
                 <p>
