@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
@@ -24,6 +25,7 @@ Route::get('/professors/{professor:id}', [TimetableController::class, 'professor
 Route::get('/classrooms', ClassroomController::class);
 Route::get('/classrooms/{classroom:name}', [TimetableController::class, 'classroomTimetable'])->name('classrooms.timetable');
 
+Route::post('/notifications/send', [NotificationController::class, 'send'])->name('notifications.send');
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisteredUserController::class, 'create']);
