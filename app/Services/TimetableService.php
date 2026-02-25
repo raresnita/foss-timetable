@@ -45,9 +45,12 @@ class TimetableService
 
         // Return the first course where current time is between start and end
         return $courses->first(function ($item) use ($now, $currentDay) {
-            return $item->day_of_week == $currentDay &&
-                $now->format('G:i') >= $item->start_hour . ':00' &&
-                $now->format('G:i') <= $item->end_hour . ':00';
+            if ($item->day_of_week != $currentDay) return false;
+
+            $start = Carbon::parse($item->start_hour, 'Europe/Bucharest')->setDateFrom($now);
+            $end = Carbon::parse($item->end_hour, 'Europe/Bucharest')->setDateFrom($now);
+
+            return $now->between($start, $end);
         });
     }
 
@@ -57,7 +60,7 @@ class TimetableService
 
         $now = now('Europe/Bucharest');
         $currentDay = $now->dayOfWeekIso; // 1 (Mon) to 7 (Sun)
-        $currentHour = (int)$now->format('H');
+        $currentHour = $now->format('H:i');
 
         $isProf = ($user->user_role === 'prof');
         $context = $isProf ? 'professor' : 'group';
@@ -75,11 +78,13 @@ class TimetableService
 
         if ($nextCourseToday) return $nextCourseToday;
 
-        return $courses->filter(function ($course) use ($currentDay) {
-            return $course->day_of_week > $currentDay;
-        })
+        $nextInWeek = $courses->filter(fn($c) => $c->day_of_week > $currentDay)
             ->sortBy(['day_of_week', 'start_hour'])
-            ->first()
-            ?? $courses->sortBy(['day_of_week', 'start_hour'])->first();
+            ->first();
+
+        if ($nextInWeek) return $nextInWeek;
+
+        // 3. Fallback: The first course of the week (e.g., it's Sunday or Friday night)
+        return $courses->sortBy(['day_of_week', 'start_hour'])->first();
     }
 }

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('subject_id')->constrained();
             $table->enum('course_type', ['Course', 'Laboratory'])->default('Course');
             $table->integer('day_of_week');
-            $table->integer('start_hour');
-            $table->integer('end_hour');
+            $table->time('start_hour');
+            $table->time('end_hour');
             $table->timestamps();
         });
     }

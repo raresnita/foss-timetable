@@ -82,14 +82,17 @@ class DatabaseSeeder extends Seeder
                 $selectedHours = array_slice($hours, 0, rand(2, 4));
 
                 foreach ($selectedHours as $hour) {
+                    $startTime = sprintf('%02d:00', $hour);
+                    $endTime = sprintf('%02d:00', $hour + 2);
+
                     Timetable::create([
                         'group_id' => $group->id,
                         'subject_id' => $subjects->random()->id,
                         'classroom_id' => $classrooms->random()->id,
                         'course_type' => fake()->randomElement(['Course', 'Laboratory']),
                         'day_of_week' => $day,
-                        'start_hour' => $hour,
-                        'end_hour' => $hour + 2,
+                        'start_hour' => $startTime,
+                        'end_hour' => $endTime,
                     ]);
                 }
             }
