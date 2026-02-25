@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TimetableController;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -36,13 +37,16 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::post('/demo-login/{role}', function ($role) {
+    if(!config('app.demo_mode')) abort(403);
+
     $email = match ($role) {
         'admin' => 'demo_admin@test.test',
         'prof' => 'demo_prof@test.test',
         'stud' => 'demo_stud@test.test',
+        default => abort(404),
     };
 
-    \Illuminate\Support\Facades\Auth::login(User::where('email', $email)->first());
+    Auth::login(User::where('email', $email)->first());
     return redirect()->intended('/');
 });
 
