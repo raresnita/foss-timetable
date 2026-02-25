@@ -6,7 +6,7 @@
 @props(['count'])
 
 <div {{$attributes->merge(['class'=>($count > 0 ? "bg-red-400" : "bg-slate-50")
-." p-4 rounded-xl shadow-sm border border-black/15 hover:shadow-md hover:border-teal-600 transition-all duration-125"])}}>
+." p-4 rounded-xl shadow-sm border border-black/15 hover:shadow-md hover:border-indigo-600 transition-all duration-125"])}}>
     <div>
         <h2>{{$count === 0 ? "No new notifications" : ($count > 1 ? $count.' new notifications' : $count.' new notification' )}}</h2>
         @if($notification)
@@ -19,7 +19,7 @@
         @endif
 
         <button command="show-modal" commandfor="dialog"
-                class="rounded-md bg-slate-50/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10">
+                class="rounded-md bg-slate-50/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-indigo-950/10 transition-all duration-150 cursor-pointer">
             Show notifications
         </button>
 
@@ -53,7 +53,7 @@
                         <div class="bg-gray-100 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                             <button type="button" command="close" commandfor="dialog"
                                     class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">
-                                Cancel
+                                Close
                             </button>
                         </div>
                     </el-dialog-panel>

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'FOSS Timetable'),
 
     /*
     |--------------------------------------------------------------------------
@@ -27,6 +27,9 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+
+    // Set Demo Mode off by default
+    'demo_mode' => env('DEMO_MODE', false),
 
     /*
     |--------------------------------------------------------------------------

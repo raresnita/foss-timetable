@@ -5,7 +5,7 @@
     <div>
         <h2 class="font-bold text-xl">{{$type === "current" ? "Current course" : "Next course"}}
             @if($type === "next")
-                <span class="text-lg italic font-normal">- {{ date('l', strtotime("Sunday +{$course->day_of_week} days")) }} at {{$course->start_hour.':00'}}</span>
+                <span class="text-lg italic font-normal">- {{ date('l', strtotime("Sunday +{$course->day_of_week} days")) }} at {{$course->start_hour}}</span>
             @endif
         </h2>
         <div class="flex flex-col md:flex-row md:gap-1">

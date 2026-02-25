@@ -8,7 +8,7 @@
 
             @foreach($days as $dayNumber => $dayName)
                 <div class="space-y-4">
-                    <h2 class="text-xl font-semibold text-teal-600 border-b-2 border-teal-200 pb-2">
+                    <h2 class="text-xl font-semibold text-indigo-600 border-b-2 border-indigo-200 pb-2">
                         {{ $dayName }}
                     </h2>
 
@@ -16,7 +16,7 @@
                         {{-- We just pass the entry and context, let the card do the rest --}}
                         <x-timetables.card :$entry :$context />
                     @empty
-                        <div class="text-sm text-slate-400 italic">No classes</div>
+                        <div class="text-sm text-slate-400 italic">No courses</div>
                     @endforelse
                 </div>
             @endforeach

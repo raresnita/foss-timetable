@@ -106,44 +106,8 @@
     @endauth
 
     @guest
-        <x-heading>FOSS Timetable - a Laravel timetable management demo</x-heading>
-
-        <div class="grid sm:grid-rows-3 md:grid-cols-3 md:grid-rows-1 gap-4">
-            <div
-                class="relative bg-slate-50 border border-slate-400 p-4 flex justify-center rounded-lg hover:shadow transition-all duration-150">
-                <form method='POST' action='/demo-login/admin'>
-                    @csrf
-                    <div>
-                        <button type="submit" class="after:absolute after:inset-0 cursor-pointer">Log in as admin
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <div
-                class="relative bg-slate-50 border border-slate-400 p-4 flex justify-center rounded-lg hover:shadow transition-all duration-150">
-                <form method='POST' action='/demo-login/prof'>
-                    @csrf
-                    <div>
-                        <button type="submit" class="after:absolute after:inset-0 cursor-pointer">Log in as professor
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <div
-                class="relative bg-slate-50 border border-slate-400 p-4 flex justify-center rounded-lg hover:shadow transition-all duration-150">
-                <form method='POST' action='/demo-login/stud'>
-                    @csrf
-                    <div>
-                        <button type="submit" class="after:absolute after:inset-0 cursor-pointer">Log in as student
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <p class='bg-amber-200 font-bold p-3 mt-4 rounded-md shadow-lg w-max'><b>WARNING!</b> The database resets every
-            24 hours.</p>
+            @if(config('app.demo_mode')) <x-hero.demo></x-hero.demo>
+            @else <x-hero.standard></x-hero.standard>
+            @endif
     @endguest
 </x-layout>
