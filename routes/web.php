@@ -28,13 +28,15 @@ Route::get('/classrooms/{classroom:name}', [TimetableController::class, 'classro
 
 Route::post('/notifications/send', [NotificationController::class, 'send'])->name('notifications.send');
 
-Route::middleware('guest')->group(function () {
-    Route::get('/register', [RegisteredUserController::class, 'create']);
-    Route::post('/register', [RegisteredUserController::class, 'store']);
+if(!config('app.demo_mode')) {
+    Route::middleware('guest')->group(function () {
+        Route::get('/register', [RegisteredUserController::class, 'create']);
+        Route::post('/register', [RegisteredUserController::class, 'store']);
 
-    Route::get('/login', [SessionController::class, 'create']);
-    Route::post('/login', [SessionController::class, 'store']);
-});
+        Route::get('/login', [SessionController::class, 'create']);
+        Route::post('/login', [SessionController::class, 'store']);
+    });
+}
 
 Route::post('/demo-login/{role}', function ($role) {
     if(!config('app.demo_mode')) abort(403);
