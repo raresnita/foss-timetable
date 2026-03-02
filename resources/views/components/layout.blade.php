@@ -8,41 +8,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
 </head>
 
-<body class="bg-white text-black px-4 md:px-12">
-@if (session('status') || session('error'))
-    <div
-        x-data="{ show: true }"
-        x-init="setTimeout(() => show = false, 4000)"
-        x-show="show"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0 -translate-y-4"
-        x-transition:enter-end="opacity-100 translate-y-0"
-        x-transition:leave="transition ease-in duration-300"
-        x-transition:leave-start="opacity-100 translate-y-0"
-        x-transition:leave-end="opacity-0 -translate-y-4"
-        class="fixed top-5 right-5 z-50 min-w-[300px]"
-    >
-        <div
-            class="{{ session('error') ? 'bg-red-500' : 'bg-indigo-600' }} text-white px-6 py-4 rounded-xl shadow-2xl flex items-center justify-between">
-            <span>{{ session('status') ?? session('error') }}</span>
-            <button @click="show = false" class="ml-4 hover:opacity-70">&times;</button>
-        </div>
-    </div>
-@endif
+<body class="bg-slate-50 text-slate-950 px-4 md:px-12 pb-8 dark:bg-slate-950 dark:text-slate-200">
 
-<nav x-data="{ mobileMenuOpen: false }" class="border-b border-b-indigo-600">
+<nav x-data="{ mobileMenuOpen: false }" class="border-b border-b-indigo-600 dark:border-b-indigo-400">
     <div class="flex items-center justify-between py-4">
         <div>
             <a href="/">
                 <h2 class="flex text-xl font-bold space-x-2 items-center">
-                    <x-far-calendar-alt class="w-6 h-6 text-indigo-600"/>
+                    <x-far-calendar-alt class="w-6 h-6 text-indigo-600 dark:text-indigo-400 mr-2"/>
                     FOSS TIMETABLE
                     @if(config('app.demo_mode'))
-                        <span class="bg-amber-200 text-xs px-2 py-1 ml-2 rounded-lg">DEMO</span>
+                        <span class="bg-amber-50 border border-amber-200 text-amber-800 dark:bg-amber-950/30 dark:border-amber-500/30 dark:text-amber-400 dark:shadow-amber-900/20 text-xs px-2 py-1 ml-2 rounded-lg">DEMO</span>
                     @endif
                 </h2>
             </a>
@@ -50,7 +30,7 @@
 
         <div class="flex md:hidden">
             <button @click="mobileMenuOpen = !mobileMenuOpen" type="button"
-                    class="text-indigo-600 hover:text-indigo-800 focus:outline-none">
+                    class="text-indigo-600 hover:text-indigo-800 focus:outline-none dark:text-indigo-400">
                 <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M4 6h16M4 12h16M4 18h16"/>

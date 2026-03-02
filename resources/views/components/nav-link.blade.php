@@ -1,1 +1,1 @@
-<a {{$attributes(['class' => "p-2 rounded-md hover:bg-indigo-600 hover:text-white transition-all duration-150"])}}>{{$slot}}</a>
+<a {{$attributes(['class' => "p-2 rounded-md border border-transparent hover:bg-indigo-600 hover:text-white hover:border hover:border-black/15 hover:shadow-lg transition-all duration-150"])}}>{{$slot}}</a>
