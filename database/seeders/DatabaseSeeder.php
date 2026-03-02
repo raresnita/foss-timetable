@@ -54,14 +54,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Demo Professor',
+            'name' => fake()->name,
             'email' => 'demo_prof@test.test',
             'user_role' => 'prof',
             'password' => Hash::make('demo_password')
         ]);
 
         User::factory()->create([
-            'name' => 'Demo Student',
+            'name' => fake()->name,
             'email' => 'demo_stud@test.test',
             'user_role' => 'stud',
             'group_id' => $groups->first()->id,
