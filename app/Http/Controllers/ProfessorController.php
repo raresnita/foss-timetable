@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 
 class ProfessorController
@@ -8,6 +9,6 @@ class ProfessorController
     public function __invoke()
     {
         $professors = User::where('user_role', 'prof')->get();
-        return view('professors.index', compact('professors'));
+        return view('items-grid', ['items' => $professors, 'context' => 'professors']);
     }
 }

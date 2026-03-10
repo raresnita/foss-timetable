@@ -11,7 +11,6 @@ class ClassroomController extends Controller
     public function __invoke()
     {
         $classrooms = Classroom::all();
-        return view('classrooms.index', compact('classrooms'));
+        return view('items-grid', ['items' => $classrooms, 'context' => 'classrooms']);
     }
 }
-
