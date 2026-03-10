@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TimetableController;
+use App\Http\Controllers\AdminController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-
-//Route::get('/register')
 
 Route::get('/groups', GroupController::class);
 Route::get('/groups/{group:name}', [TimetableController::class, 'groupTimetable'])->name('groups.timetable');
@@ -28,7 +27,7 @@ Route::get('/classrooms/{classroom:name}', [TimetableController::class, 'classro
 
 Route::post('/notifications/send', [NotificationController::class, 'send'])->name('notifications.send');
 
-if(!config('app.demo_mode')) {
+if (!config('app.demo_mode')) {
     Route::middleware('guest')->group(function () {
         Route::get('/register', [RegisteredUserController::class, 'create']);
         Route::post('/register', [RegisteredUserController::class, 'store']);
@@ -39,7 +38,7 @@ if(!config('app.demo_mode')) {
 }
 
 Route::post('/demo-login/{role}', function ($role) {
-    if(!config('app.demo_mode')) abort(403);
+    if (!config('app.demo_mode')) abort(403);
 
     $email = match ($role) {
         'admin' => 'demo_admin@test.test',
@@ -50,6 +49,12 @@ Route::post('/demo-login/{role}', function ($role) {
 
     Auth::login(User::where('email', $email)->first());
     return redirect()->intended('/');
+});
+
+Route::middleware(['auth', 'can:admin-only'])->group(function () {
+    Route::get('/manage/users', [AdminController::class, 'manageUsers']);
+    Route::get('/manage/classrooms', [AdminController::class, 'manageClassrooms']);
+    Route::get('/manage/groups', [AdminController::class, 'manageGroups']);
 });
 
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
