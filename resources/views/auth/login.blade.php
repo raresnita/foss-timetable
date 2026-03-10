@@ -3,8 +3,9 @@
 
     <section class="flex justify-center">
         <div
-            class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-slate-50 rounded-xl border-gray-200 border shadow-2xl">
-            <h2 class="text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+            class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-slate-50 rounded-xl border-black/15 border shadow-2xl
+            dark:bg-slate-900 dark:ring-1 dark:ring-white/10">
+            <h2 class="text-center text-2xl/9 font-bold tracking-tight text-gray-900  dark:text-slate-200"">
                 Enter your credentials to gain access to notifications and personal timetable
             </h2>
 
@@ -12,24 +13,17 @@
                 <form method="POST" action="/login">
                     @csrf
 
-                    <x-forms.input
-                        label="E-mail"
-                        type="email"
-                        name="email"
-                        placeholder="john_doe@test.test"/>
-                    <x-forms.input
-                        label="Password"
-                        name="password"
-                        type="password"/>
+                    <x-forms.input label="E-mail" type="email" name="email" placeholder="john_doe@test.test" />
+                    <x-forms.input label="Password" name="password" type="password" />
 
                     <x-forms.button>Login</x-forms.button>
                 </form>
             </div>
 
             <p class="mt-10 text-center text-sm/6 text-gray-500">
-                Don't have an account? <a href="/register" class="text-indigo-600 hover:underline">Create one!</a>
+                Don't have an account? <a href="/register"
+                    class="text-indigo-600 dark:text-indigo-400  hover:underline">Create one!</a>
             </p>
         </div>
     </section>
 </x-layout>
-

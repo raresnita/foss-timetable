@@ -5,8 +5,12 @@
         'type' => 'text',
         'id' => $name,
         'name' => $name,
-        'class' => 'block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 hover:outline-gray-600 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 transition-all duration-150',
-        'value' => old($name)
+        'class' => 'block w-full bg-slate-100 border border-black/15 px-4 py-2 rounded-md text-sm 
+            hover:border-indigo-500 focus:border-indigo-500 focus:outline-0
+            dark:bg-slate-800 dark:border-white/15 dark:hover:border-indigo-400 dark:ring-1 dark:ring-white/10 
+            dark:focus:border-indigo-400 dark:focus:outline-0
+            shadow transition-all duration-150',
+        'value' => old($name),
     ];
 @endphp
 
