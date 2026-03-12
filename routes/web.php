@@ -11,6 +11,8 @@ use App\Http\Controllers\AdminController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
     return view('index');
@@ -58,3 +60,10 @@ Route::middleware(['auth', 'can:admin-only'])->group(function () {
 });
 
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
+
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'ro'])) {
+        Session::put('locale', $locale);
+    }
+    return redirect()->back();
+});

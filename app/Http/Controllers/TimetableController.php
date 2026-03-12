@@ -60,16 +60,19 @@ class TimetableController extends Controller
         $this->timetableService = $service;
     }
 
-    public function groupTimetable(Group $group) {
+    public function groupTimetable(Group $group)
+    {
         return $this->renderView($group, 'group');
     }
 
-    public function classroomTimetable(Classroom $classroom) {
+    public function classroomTimetable(Classroom $classroom)
+    {
         return $this->renderView($classroom, 'classroom');
     }
 
-    public function professorTimetable(User $professor) {
-        if($professor->user_role !== 'prof') abort(404);
+    public function professorTimetable(User $professor)
+    {
+        if ($professor->user_role !== 'prof') abort(404);
         return $this->renderView($professor, 'professor');
     }
 

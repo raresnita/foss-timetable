@@ -1,7 +1,7 @@
 @props(['role', 'title', 'description'])
 
 <div
-    class="group relative bg-slate-50 border border-black/15 p-6 rounded-xl hover:bg-slate-200 hover:border-indigo-500 
+    class="group relative bg-white border border-black/15 p-6 rounded-xl hover:bg-slate-100 hover:border-indigo-500 
 dark:bg-slate-900 dark:border-white/15 dark:hover:border-indigo-400 hover:dark:bg-slate-800 dark:ring-1 dark:ring-white/10 
 shadow transition-all duration-150">
     <form method="POST" action="/demo-login/{{ $role }}">

@@ -43,16 +43,16 @@
             </div>
 
             <div class="hidden md:flex items-center space-x-6 font-bold">
-                <x-nav-link href="/groups">Groups</x-nav-link>
-                <x-nav-link href="/professors">Professors</x-nav-link>
-                <x-nav-link href="/classrooms">Classrooms</x-nav-link>
+                <x-ui.nav-link href="/groups">{{ __('ui.groups') }}</x-ui.nav-link>
+                <x-ui.nav-link href="/professors">{{ __('ui.professors') }}</x-ui.nav-link>
+                <x-ui.nav-link href="/classrooms">{{ __('ui.classrooms') }}</x-ui.nav-link>
 
                 @auth
                     <form method="POST" action="/logout" class="inline">
                         @csrf
                         <button
                             class="p-2 rounded-md cursor-pointer text-red-500 hover:bg-red-500 hover:text-white transition-all duration-150">
-                            Log out
+                            {{ __('ui.logout') }}
                         </button>
                     </form>
                 @endauth
@@ -61,12 +61,14 @@
                     @if (!config('app.demo_mode'))
                         <a class="p-2 rounded-md hover:bg-indigo-600 hover:text-white transition-all duration-150
                         dark:hover:bg-indigo-400"
-                            href="/login">Log in</a>
+                            href="/login">{{ __('ui./login') }}</a>
                         <a class="bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 transition-all duration-150
                         dark:bg-indigo-500"
-                            href="/register">Register</a>
+                            href="/register">{{ __('ui.register') }}</a>
                     @endif
                 @endguest
+
+                <x-ui.language-switch />
             </div>
         </div>
 
@@ -74,25 +76,27 @@
             x-transition:enter-start="opacity-0 transform scale-95"
             x-transition:enter-end="opacity-100 transform scale-100" class="md:hidden pb-4 space-y-2 font-bold">
 
-            <x-nav-link href="/groups" class="block py-2">Groups</x-nav-link>
-            <x-nav-link href="/professors" class="block py-2">Professors</x-nav-link>
-            <x-nav-link href="/classrooms" class="block py-2">Classrooms</x-nav-link>
+            <x-ui.nav-link href="/groups" class="block py-2">{{ __('ui.groups') }}</x-ui.nav-link>
+            <x-ui.nav-link href="/professors" class="block py-2">{{ __('ui.professors') }}</x-ui.nav-link>
+            <x-ui.nav-link href="/classrooms" class="block py-2">{{ __('ui.classrooms') }}</x-ui.nav-link>
 
             <hr class="border-indigo-100 my-2">
 
             @auth
                 <form method="POST" action="/logout">
                     @csrf
-                    <button class="w-full text-left p-2 text-red-500">Log out</button>
+                    <button class="w-full text-left p-2 text-red-500">{{ __('ui.logout') }}</button>
                 </form>
             @endauth
 
             @guest
                 @if (!config('app.demo_mode'))
-                    <a class="block p-2" href="/login">Log in</a>
-                    <a class="block p-2 text-indigo-600" href="/register">Register</a>
+                    <a class="block p-2" href="/login">{{ __('ui.login') }}</a>
+                    <a class="block p-2 text-indigo-600" href="/register">{{ __('ui.register') }}</a>
                 @endif
             @endguest
+
+            <x-ui.language-switch />
         </div>
     </nav>
 
