@@ -3,7 +3,7 @@
 <x-layout>
     <x-heading>{{ Str::ucfirst(__("ui.$context")) }}</x-heading>
 
-    <div class="grid md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-8 gap-6">
+    <div class="grid md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-8 gap-4 md:gap-6">
         @foreach ($items as $item)
             <a href="/{{ $context }}/{{ $context === 'professors' ? $item->id : $item->name }}"
                 class="flex items-center md:block text-center bg-white border border-black/15 p-6 rounded-xl hover:bg-slate-200 hover:border-indigo-500 

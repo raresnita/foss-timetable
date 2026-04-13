@@ -31,9 +31,10 @@
 
             <div class="flex min-h-full items-center justify-center p-4">
                 <el-dialog-panel
-                    class="relative transform overflow-hidden rounded-2xl bg-white dark:bg-slate-900 text-left shadow-2xl transition-all sm:w-full sm:max-w-lg border border-transparent dark:border-slate-800 ring-1 ring-black/5 dark:ring-white/10">
+                    class="relative transform overflow-hidden rounded-2xl bg-white dark:bg-slate-900 text-left shadow-2xl transition-all 
+                    w-full md:w-2xl border border-transparent dark:border-slate-800 ring-1 ring-black/5 dark:ring-white/10">
 
-                    <div class="px-6 py-6">
+                    <div class="px-6 py-6 min-w-40">
                         <h3 id="dialog-title"
                             class="text-lg font-bold text-gray-900 dark:text-white border-b dark:border-slate-800 pb-3">
                             Notifications
@@ -43,7 +44,7 @@
                             @forelse(Auth::user()->notifications as $notification)
                                 <div
                                     class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800">
-                                    <div class="flex justify-between items-start mb-1">
+                                    <div class="flex flex-col md:flex-row justify-between items-start mb-1">
                                         <span class="font-bold text-slate-900  dark:text-slate-100 text-sm">
                                             {{ $notification->data['professor_name'] }}
                                         </span>

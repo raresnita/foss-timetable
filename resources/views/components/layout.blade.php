@@ -61,7 +61,7 @@
                     @if (!config('app.demo_mode'))
                         <a class="p-2 rounded-md hover:bg-indigo-600 hover:text-white transition-all duration-150
                         dark:hover:bg-indigo-400"
-                            href="/login">{{ __('ui./login') }}</a>
+                            href="/login">{{ __('ui.login') }}</a>
                         <a class="bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 transition-all duration-150
                         dark:bg-indigo-500"
                             href="/register">{{ __('ui.register') }}</a>

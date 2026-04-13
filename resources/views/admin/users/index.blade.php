@@ -21,7 +21,7 @@
                         <td class="py-4 px-4">{{ $user->id }}</td>
                         <td class="py-4 px-4 font-medium">{{ str($user->name)->title() }}</td>
                         <td class="py-4 px-4">{{ $user->email }}</td>
-                        <td class="py-4 px-4">{{ $user->user_role }}</td>
+                        <td class="py-4 px-4">{{ $user->user_role === 'stud' ? 'Student' : 'Professor' }}</td>
                         <td class="py-4 px-4">{{ $user->address }}</td>
                         <td class="py-4 px-4">{{ $user->group_id ?? 'N/A' }}</td>
 

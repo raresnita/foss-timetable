@@ -12,10 +12,9 @@
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <x-demo-card role="stud" title="{{ __('hero.demo_stud_login') }}" description="{{ __('hero.demo_stud_desc') }}" />
-    <x-demo-card role="prof" title="{{ __('hero.demo_prof_login') }}" description="{{ __('hero.demo_prof_desc') }}" />
-    <x-demo-card role="admin" title="{{ __('hero.demo_admin_login') }}"
-        description="{{ __('hero.demo_admin_desc') }}" />
+    <x-demo-card role="stud" :title="__('hero.demo_stud_login')" :description="__('hero.demo_stud_desc')" />
+    <x-demo-card role="prof" :title="__('hero.demo_prof_login')" :description="__('hero.demo_prof_desc')" />
+    <x-demo-card role="admin" :title="__('hero.demo_admin_login')" :description="__('hero.demo_admin_desc')" />
 </div>
 
 <div

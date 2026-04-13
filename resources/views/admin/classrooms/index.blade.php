@@ -6,7 +6,8 @@
             <thead>
                 <tr class="border-b-indigo-600 border-b dark:border-b-indigo-500">
                     <th class="py-3 px-4">ID</th>
-                    <th class="py-3 px-4">Name</th>
+                    <th class="py-3 px-4">Classroom name</th>
+                    <th class="py-3 px-4">Capacity</th>
                     <th colspan="2"></th>
                 </tr>
             </thead>
@@ -16,6 +17,7 @@
                     <tr class="hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                         <td class="py-4 px-4">{{ $item->id }}</td>
                         <td class="py-4 px-4 font-medium">{{ str($item->name)->title() }}</td>
+                        <td class="py-4 px-4 font-medium">20</td>
 
                         <td class="py-4 px-4 text-right w-px whitespace-nowrap">
                             <a href="#"

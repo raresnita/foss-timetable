@@ -2,10 +2,11 @@
 
 <div class="rounded">
     <div class="flex md:flex-col gap-2 mb-1">
-        <div class="uppercase">
+        <div class="uppercase  tracking-wider">
             {{ \Carbon\Carbon::now()->startOfWeek()->addDays($entry->day_of_week - 1)->translatedFormat('l') }}</div>
         <div class="text-xs font-bold text-indigo-500 uppercase tracking-wider dark:text-indigo-400">
-            {{ $entry->start_hour }} - {{ $entry->end_hour }} - {{ $entry->course_type }}
+            {{ $entry->start_hour }} - {{ $entry->end_hour }} -
+            {{ $entry->course_type == 'course' ? __('ui.course') : __('ui.laboratory') }}
         </div>
     </div>
 
