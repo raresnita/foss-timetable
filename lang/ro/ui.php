@@ -13,6 +13,7 @@ return [
 
     'timetable_header' => 'Orar pentru',
     'course_none' => 'Niciun curs',
+    'course_none_extended' => 'Momentan niciun curs. Ia o pauză!',
     'course' => 'Curs',
     'laboratory' => 'Laborator',
 ];

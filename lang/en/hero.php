@@ -23,5 +23,5 @@ return [
     'demo_admin_desc' => 'Manage the school structure',
 
     'demo_warning_title' => 'Demo Environment',
-    'demo_warning_desc' => 'The database resets every 24 hours.',
+    'demo_warning_desc' => 'The database resets every Monday at midnight',
 ];

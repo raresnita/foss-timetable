@@ -13,6 +13,7 @@ return [
 
     'timetable_header' => 'Timetable for',
     'course_none' => 'No courses',
+    'course_none_extended' => 'No course currently. Go grab a coffee!',
     'course' => 'Course',
     'laboratory' => 'Laboratory',
 ];

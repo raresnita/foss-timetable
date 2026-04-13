@@ -23,5 +23,5 @@ return [
     'demo_admin_desc' => 'Administrează structura școlii',
 
     'demo_warning_title' => 'Mediu demonstrativ',
-    'demo_warning_desc' => 'Baza de date este reinițiată la fiecare 24 de ore.',
+    'demo_warning_desc' => 'Baza de date este reinițiată în fiecare luni, la miezul nopții',
 ];
