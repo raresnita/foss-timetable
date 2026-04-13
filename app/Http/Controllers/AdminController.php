@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function manageUsers()
     {
-        $items = User::orderBy('name')->paginate(10);
+        $items = User::orderBy('name')->whereNotLike('user_role', 'admin')->paginate(10);
 
         return view('admin.users.index', compact('items'));
     }

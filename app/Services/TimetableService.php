@@ -40,7 +40,7 @@ class TimetableService
         if (!$model) return null;
 
         $courses = $this->getTimetableData($model, $context);
-//        dd($courses);
+        //        dd($courses);
 
 
         // Return the first course where current time is between start and end
@@ -86,5 +86,31 @@ class TimetableService
 
         // 3. Fallback: The first course of the week (e.g., it's Sunday or Friday night)
         return $courses->sortBy(['day_of_week', 'start_hour'])->first();
+    }
+
+    public function getDayBoundaries($user): array
+    {
+        $now = now('Europe/Bucharest');
+        $isProf = ($user->user_role === 'prof');
+        $context = $isProf ? 'professor' : 'group';
+        $model = $isProf ? $user : $user->group;
+
+        // Get all courses for today
+        $todayCourses = $this->getTimetableData($model, $context)
+            ->where('day_of_week', $now->dayOfWeekIso);
+
+        if ($todayCourses->isEmpty()) {
+            // Fallback if no courses today (8 AM to 8 PM)
+            return ['start' => 8, 'end' => 20];
+        }
+
+        // Extract hours as floats (e.g., "08:30" becomes 8.5)
+        $startHour = Carbon::parse($todayCourses->min('start_hour'))->hour;
+        $endHour = Carbon::parse($todayCourses->max('end_hour'))->hour + 1; // Pad by 1 hour
+
+        return [
+            'start' => max(0, $startHour - 1), // Start 1 hour before first class
+            'end' => min(24, $endHour)         // End 1 hour after last class
+        ];
     }
 }
