@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('timetables', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('group_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('classroom_id')->constrained();
-            $table->foreignId('subject_id')->constrained();
+            $table->foreignId('group_id');
+            $table->foreignId('classroom_id');
+            $table->foreignId('subject_id');
             $table->enum('course_type', ['Course', 'Laboratory'])->default('Course');
             $table->integer('day_of_week');
             $table->time('start_hour');
